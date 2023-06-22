@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.0.min.js"></script>
+
+    <style>
+        button {
+          padding: 10px;
+        }
+        .pp {
+          width: 200px;
+          padding: 30px 0;
+          font: bold 24px;
+          text-align: center;
+          background: #00ced1;
+          border: 1px;
+          box-sizing: border-box;
+        }
+      </style>
+</head>
+
+<body>
+    <p id="pid">This is jquery</p>
+    <button id="btn">Dblclick</button>
+    <p id="pid1">Hover</p>
+    <p id="pid2">Mouse Enter and Leave</p>
+    <p id="pid3">Mouse Enter and Leave binding</p>
+    <p id="pid4">Function</p>
+    <script>
+                    // jquery event
+        function clicked() {
+            $(this).text('Used a named function!');
+        }
+
+        $(document).ready(function () {
+
+            $('#pid').click(function () {
+                alert('Click byj');
+            });
+
+            $('#btn').dblclick(function () {
+                $(this).hide();
+            });
+
+            $('#pid1').hover(function () {
+                $(this).css('background-color', 'red');
+            });
+
+            $('#pid2').mouseenter(function () {
+                $(this).css('background-color', 'cyan');
+            });
+
+            $('#pid2').mouseleave(function () {
+                $(this).css('background-color', 'yellow');
+            });
+
+            //  bind a function to an event
+            $('#pid3').on({
+                mouseenter: function () {
+                    $(this).css('background-color', 'cyan');
+                },
+                mouseleave: function () {
+                    $(this).css('background-color', 'yellow');
+                }
+            });
+
+
+            $('#pid4').on("click", clicked);
+
+        });
+       
+        // java script
+        // document.getElementById('pid').onclick = function(){
+        //    alert('Click');
+        // }
+    </script>
+
+    <!-- Effects -->
+    <hr>
+    <button type="button" id="hidebt">Hide</button>
+    <button type="button" id="showbt">Show</button>
+    <button type="button" id="togglebt">Toggle</button>
+    <hr>
+    <P class="pfast">dfdf dnfn dfjd1</P>
+    <P class="pslow">dfdf dnfn dfjd2</P>
+    <P class="pslower">dfdf dnfn dfjd3</P>
+    <hr>
+    <button type="button" id="chan">Changing</button>
+    <button type="button" id="reset">Reset</button>
+    <hr>
+    <p class="pp">Hello</p>
+    <script>
+        $(document).ready(function(){
+
+            $("#hidebt").click(function(){
+                $("p.pfast").fadeOut(2000);
+                $("p.pslow").hide("slow");
+                $("p.pslower").fadeTo(2000,0.5);
+            });
+
+            $("#showbt").click(function(){
+                $("p.pfast").fadeIn(2000);
+                $("p.pslow").show("slow");
+                $("p.pslower").fadeTo(2000,1); 
+            });
+
+            $("#togglebt").click(function(){
+                $("p.pfast").fadeToggle(2000);
+                $("p.pslow").toggle("slow");
+                $("p.pslower").toggle(2000);
+            });
+        //Animation
+        $('#chan').click(function () {
+          $('.pp')
+            .animate({ width: '100%' })
+            .animate({ fontSize: '35px' })
+            .animate({ borderWidth: 30 });
+        });
+
+        $('#reset').click(function () {
+          $('.pp').removeAttr('style');
+        });
+
+        });
+    </script>
+
+</body>
+
+</html>
